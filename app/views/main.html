@@ -1,16 +1,18 @@
 <div class="container">
-  <h1>Album or Artist</h1>
-  <input ng-keyup="search($event)" type="text" ng-model="searchAlbum" placeholder="Album Example" required>
-  <p><a class="btn btn-lg btn-success" ng-click="search($event)" >Search!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <h1 style="display: inline-block;">Search&nbsp;</h1>
+  <input ng-keyup="search($event)" type="text" ng-model="searchAlbum" placeholder="Search Album" required>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 card" ng-repeat="value in result">
-      <img src="{{value.images[0].url}}" style="width: 100px; height: 100px;" alt="Avatar" style="width:100%">
+      <a ng-click="navigateTo(value)">
+        <img src="{{value.images[0].url}}" style="width: 50px; height: 50px;" alt="Avatar">
+      </a>
       <div class="container">
-        <h4><b>Album: {{value.name}}</b></h4>
+        <b>Album:</p>
+        <h5><p>{{value.name | limitTo:25}}</b></h5>
         <div>
-        Artist:
+        <h5>Artist:</h5>
         <ul>
-          <li ng-repeat="artist in value.artists">{{artist.name}}</li> 
+          <li ng-repeat="artist in value.artists"><a ng-click="navigateToArtist(artist)">{{artist.name | limitTo:25}}</a></li>
         </ul>
         </div>
       </div>

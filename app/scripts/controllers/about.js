@@ -8,10 +8,11 @@
  * Controller of the spotifyExampleApp
  */
 angular.module('spotifyExampleApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('AboutCtrl', ['$scope', '$resource', '$rootScope', '$sce', '$location', function ($scope, $resource, $rootScope, $sce, $location) {
+    $scope.trustSrc = function(src) {
+      if (!src) {
+        $location.path("");
+      }
+      return $sce.trustAsResourceUrl(src);
+    }
+  }]);
