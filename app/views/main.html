@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h1>Album or Artist</h1>
+  <input type="text" ng-model="searchAlbum" placeholder="Album Example" required>
+  <p><a class="btn btn-lg btn-success" ng-click="search()" >Search!<span class="glyphicon glyphicon-ok"></span></a></p>
+  <div style="background: red; width: 100%; height: 100px;">
+    <div ng-repeat="value in result"> {{value.name}} </div>
+  </div>
+</div>
